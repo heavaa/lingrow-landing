@@ -26,6 +26,8 @@
   .msg { min-height: 22px; font-size: 14px; font-weight: 600; }
   .msg.ok { color:#1a9c5b; } .msg.err { color:#d23b27; }
   @keyframes wave { 0%,100%{transform:scaleY(0.6)} 50%{transform:scaleY(1)} }
+  html, body { overflow-x: hidden; max-width: 100%; }
+  * { min-width: 0; }
 </style>
 <script>
   tailwind.config = { theme: { extend: {
@@ -55,9 +57,9 @@
 <main class="pt-20">
 
 <!-- HERO -->
-<section class="relative min-h-[88vh] flex items-center px-6 md:px-page-margin py-16 overflow-hidden">
+<section class="relative min-h-[80vh] flex items-center px-6 md:px-page-margin py-12 overflow-hidden">
   <!-- Background waveform -->
-  <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[420px] pointer-events-none opacity-[0.35]">
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[420px] pointer-events-none opacity-[0.18]">
     <svg height="100%" width="100%" viewBox="0 0 1000 400" preserveAspectRatio="none">
       <path d="M0,200 Q50,40 100,200 T200,200 T300,200 T400,200 T500,200 T600,200 T700,200 T800,200 T900,200 T1000,200" fill="none" stroke="#ff4d00" stroke-width="3"></path>
       <path d="M0,200 Q25,130 50,200 T100,200 T150,200 T200,200 T250,200 T300,200 T350,200 T400,200 T450,200 T500,200 T550,200 T600,200 T650,200 T700,200 T750,200 T800,200 T850,200 T900,200 T950,200 T1000,200" fill="none" stroke="#ff4d00" stroke-width="1.2" opacity="0.6"></path>
@@ -72,21 +74,32 @@
         <div class="relative z-10 bg-black/40 rounded-xl p-4 h-24 flex items-center justify-center border border-white/5">
           <span class="font-mono text-xl text-signal-orange orange-glow tracking-widest">LINGROW AM/FM</span>
         </div>
-        <div class="relative z-10 flex flex-col gap-6">
-          <div class="flex justify-between items-center">
-            <div class="w-16 h-16 rounded-full knob-texture shadow-lg border-2 border-surface-dim flex items-center justify-center">
-              <div class="w-1 h-4 bg-secondary-fixed-dim rounded-full -translate-y-4"></div>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div class="flex gap-2">
-                <div class="w-3 h-3 rounded-full bg-signal-orange orange-glow"></div>
-                <div class="w-3 h-3 rounded-full bg-on-surface/20"></div>
+        <div class="relative z-10 flex flex-col gap-5">
+          <div class="flex justify-between items-end">
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center gap-1.5">
+                <div class="w-12 h-12 rounded-full knob-texture shadow-lg border-2 border-surface-dim flex items-center justify-center">
+                  <div class="w-0.5 h-3 bg-secondary-fixed-dim rounded-full -translate-y-2.5"></div>
+                </div>
+                <span class="font-mono text-[8px] text-surface-variant tracking-widest">TUNE</span>
               </div>
-              <span class="font-mono text-[10px] text-surface-variant tracking-wider">ON AIR</span>
+              <div class="flex flex-col items-center gap-1.5">
+                <div class="w-12 h-12 rounded-full knob-texture shadow-lg border-2 border-surface-dim flex items-center justify-center">
+                  <div class="w-0.5 h-3 bg-secondary-fixed-dim rounded-full -translate-y-1.5 translate-x-2 rotate-[60deg]"></div>
+                </div>
+                <span class="font-mono text-[8px] text-surface-variant tracking-widest">VOL</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1.5 items-end">
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-signal-orange orange-glow"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-on-surface/20"></div>
+              </div>
+              <span class="font-mono text-[9px] text-surface-variant tracking-wider">ON AIR</span>
             </div>
           </div>
-          <div class="w-full h-8 bg-black/30 rounded-full neumorphic-inset p-1 flex items-center">
-            <div class="w-12 h-6 bg-surface rounded-full shadow-md"></div>
+          <div class="w-full h-7 bg-black/30 rounded-full neumorphic-inset p-1 flex items-center">
+            <div class="w-10 h-5 bg-surface rounded-full shadow-md"></div>
           </div>
         </div>
       </div>
@@ -222,6 +235,28 @@
         </div>
         <div class="w-20 h-20 rounded-full knob-texture shadow-xl flex items-center justify-center border-4 border-surface-dim relative z-10">
           <span class="material-symbols-outlined text-secondary scale-125">power_settings_new</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 창업자 스토리 (testimonial 자리 — 출시 전 founder narrative) -->
+<section class="py-20 md:py-24 px-6 md:px-page-margin bg-surface-container-low">
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-surface-container-lowest neumorphic-raised rounded-[2.5rem] p-9 md:p-14 border border-white/50 flex flex-col gap-6">
+      <span class="font-mono text-signal-orange text-xs tracking-widest">창업자 이야기</span>
+      <h2 class="text-2xl md:text-3xl font-bold leading-snug">저도, 영어가 서툰 부모였습니다</h2>
+      <div class="flex flex-col gap-4 text-secondary text-lg leading-relaxed">
+        <p>아이에게 영어를 자연스럽게 들려주고 싶었지만 — 영상을 틀자니 화면 앞에 앉히는 게 마음에 걸렸고, 좋다는 음원을 매일 찾아 트는 것도 생각보다 큰일이었어요.</p>
+        <p>"부모가 영어를 못해도, 화면 없이도 집에 영어가 흐르게 할 순 없을까?" 그 질문 하나에서 <span class="text-on-surface font-semibold">Lingrow</span>가 시작됐습니다.</p>
+        <p class="text-on-surface font-medium">제 아이에게 가장 먼저 들려주고 싶은 라디오를 만들고 있어요.</p>
+      </div>
+      <div class="flex items-center gap-3 mt-2">
+        <div class="w-11 h-11 rounded-full knob-texture border-2 border-surface-dim shrink-0"></div>
+        <div class="flex flex-col">
+          <span class="font-bold text-on-surface">Lingrow 창업자</span>
+          <span class="font-mono text-xs text-secondary">heavaa · 아이를 키우는 아빠</span>
         </div>
       </div>
     </div>
